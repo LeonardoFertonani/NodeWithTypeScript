@@ -6,9 +6,9 @@ const router = Router();
 
 router.get('/', (_, res) => {
   return res.send('working');
-})
+});
 
-router.post('/cidades', CidadesController.create);
+router.post('/cidades',CidadesController.createBodyValidator, CidadesController.createQueryValidator, CidadesController.create);
 
 
 
