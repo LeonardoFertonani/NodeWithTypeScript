@@ -3,12 +3,13 @@ import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
 
 interface ICidade {
-  name: string;
+  city: string;
+  state: string;
 }
 const bodyValidation: yup.Schema<ICidade> = yup.object().shape({
-  name: yup.string().min(3).required()
+  city: yup.string().min(3).required(),
+  state: yup.string().required()
 });
-
 export const createBodyValidator: RequestHandler = async (req, res, next) => {
   try {
     await bodyValidation.validate(req.body, {abortEarly: false});
@@ -31,7 +32,6 @@ interface IFilter {
 const queryValidation: yup.Schema<IFilter> = yup.object().shape({
   filter: yup.string().min(3),
 });
-
 export const createQueryValidator: RequestHandler = async (req, res, next) => {
   try {
     await queryValidation.validate(req.query, {abortEarly: false});
