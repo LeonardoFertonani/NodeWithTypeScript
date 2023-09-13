@@ -8,7 +8,7 @@ router.get('/', (_, res) => {
   return res.send('working');
 });
 
-router.post('/cidades',CidadesController.createBodyValidator, CidadesController.createQueryValidator, CidadesController.create);
+router.post('/cidades', CidadesController.createValidator, CidadesController.create);
 
 
 
